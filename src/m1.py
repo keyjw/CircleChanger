@@ -12,6 +12,7 @@ import random
 import sys
 import time
 import m1t_test_CircleChanger as m1_tests
+import math
 
 ########################################################################
 # IMPORTANT:
@@ -83,6 +84,11 @@ class CircleChanger(object):
             :type fill_color: str
             :type colors: sequence of str
         """
+        self.center = rg.Point(x, y)
+        self.radius = radius
+        self.circle = rg.Circle(self.center, self.radius)
+        self.fill_color = fill_color
+        self.colors = colors
         self.animation_factor = 1  # Smaller => faster animations
         self.seconds_to_sleep = 0.5  # Default for each call to draw
         # --------------------------------------------------------------
@@ -191,6 +197,8 @@ class CircleChanger(object):
         Type hints:
             :type point: rg.Point
         """
+        self.distance = self.center.get_distance_from(point)
+        return self.distance
         ################################################################
         # TODO: 3.
         #   First, READ the doc-string (specification) above.
@@ -236,6 +244,7 @@ class CircleChanger(object):
         Type hints:
             :type amount_to_swell_or_shrink: int
         """
+
         ################################################################
         # TODO: 4.
         #   First, READ the doc-string (specification) above.
